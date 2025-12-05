@@ -60,6 +60,15 @@ PlanetAPI::setDebug(true);
 ```
 You can also provide a custom logger callback if you want to pipe messages elsewhere.
 
+## Experience API Endpoints
+The repository includes an HTTP-friendly Experience API under `api/v1/`. Each endpoint lives in its own folder (for example, `api/v1/system/info`) with an `index.php` entry point and a `README.md` describing method, inputs, responses, and common errors.
+
+- **Routing**: place the `api/v1/.htaccess` file on your server (or copy the rewrite rules into your Apache/Nginx config) so URLs such as `/api/v1/system/info/10.15.100.2` map to the correct PHP script and expose the `switch_ip` via `PATH_INFO`. You can also pass `?switch_ip=` when rewrites are unavailable.
+- **Authentication**: per-request overrides are supported through query parameters (`username`, `password`, `timeout`). When omitted, defaults from `api/v1/config.php` apply.
+- **Response shape**: every endpoint returns pretty-printed JSON using the same `{ success, operation, data, meta }` envelope, with structured error objects when something fails.
+
+Refer to each endpoint’s README (e.g., `api/v1/system/summary/README.md`) for exact payloads covering system info, resources, network config, summary snapshots, port status, bandwidth writes, credential changes, backups, and reboots.
+
 ## Error Handling
 All public methods wrap their work in `guardOperation()`. On failure you get:
 ```php
