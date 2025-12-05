@@ -7,17 +7,24 @@ A lightweight PHP 7+ client for managing Planet GT-915A fiber converters/switche
 - **Read endpoints** for system info, resource utilization, IPv4 configuration, bandwidth profiles, port status, SFP diagnostics, and VLAN tables.
 - **Write helpers** for updating device metadata, shaping bandwidth per port, saving configuration, rotating credentials, performing backups, and rebooting.
 - **Automatic persistence**: write operations trigger the switch’s `save.cgi` flow and retry after credential changes to ensure settings stick.
-- **Consistent error payloads**: every public method returns either data/`true` or an array like `{ success: false, operation: '...', error: '...' }`
-- **Utility scripts**: `examples.php` for a documented tour of the API surface.
+- **Consistent error payloads**: every public method returns either data/`true` or an array like `{ success: false, operation: '...', error: '...' }`—no fatal errors leak out.
+- **Utility scripts**: `test.php` for quick smoke checks and `examples.php` for a documented tour of the API surface.
 
 ## Requirements
 - PHP 7.2+ with the cURL and JSON extensions enabled (default on most installations).
 - Network access to a Planet GT-915A running the standard web firmware.
+- CLI access to run the provided scripts (`php test.php`).
+
 
 ## Getting Started
 1. **Clone / copy** this repository onto a machine that can reach the switch.
 2. **Install dependencies** – none beyond PHP 7+cURL.
-3. **Update credentials** in `examples.php` (`base_url`, `username`, `password`).
+3. **Update credentials** in `test.php` or `examples.php` (`base_url`, `username`, `password`).
+4. **Run a quick check**:
+   ```bash
+   php test.php
+   ```
+   You should see a JSON dump of `printSwitchData()` plus a backup archive saved in your system temp directory.
 
 ## Usage
 ### Basic include
@@ -64,11 +71,21 @@ All public methods wrap their work in `guardOperation()`. On failure you get:
     'context'   => ['endpoint' => '/cgi-bin/sysinfo.cgi', 'system' => 'lab-switch @ http://...']
 ]
 ```
-This makes it easy to follow errors back to higher-level services or APIs without fatal exceptions.
+This makes it easy to bubble errors back to higher-level services or APIs without fatal exceptions.
 
 ## Backup Archives
 `PlanetAPI::makeBackup()` mirrors the browser workflow: it triggers `/cgi-bin/back.cgi`, waits for a successful `bktar` status, downloads `/tmp/current.tar.gz`, and writes the archive to `sys_get_temp_dir()` (e.g., `/var/folders/.../planet_backup_<timestamp>.tar.gz`). Capture the return value to know exactly where the file landed.
 
 ## Project Layout
 - `class.planet.php` – the core client library.
+- `test.php` – minimal smoke test dumping `printSwitchData()` and forcing a backup.
 - `examples.php` – comprehensive cookbook covering every public method.
+
+## Contributing
+Issues and PRs are welcome. If you add new endpoints, follow the existing pattern:
+1. Create a helper that performs the raw request/parse.
+2. Wrap the public method in `guardOperation()`.
+3. Return structured errors and, for writes, auto-save when appropriate.
+
+## License
+Specify your license of choice here (MIT, Apache 2.0, etc.).
