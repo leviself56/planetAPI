@@ -1,0 +1,253 @@
+------------------------------------------------------------
+System Info
+------------------------------------------------------------
+{
+    "mac": "a8:f7:e0:d0:11:11",
+    "fwversion": "v1.44b240522",
+    "sysdate": "1970-01-01 09:52:31",
+    "uptime": "6751",
+    "fwdate": "2024-05-22T16:53",
+    "devicename": "GT-915A",
+    "comment": "comment",
+    "location": "location",
+    "contact": "company.name"
+}
+
+------------------------------------------------------------
+System Resources
+------------------------------------------------------------
+{
+    "ram_usage_kb": 27676,
+    "cpu_usage_percent": 3,
+    "free_memory_display": "27676K",
+    "cpu_usage_display": "3%"
+}
+
+------------------------------------------------------------
+Network Config
+------------------------------------------------------------
+{
+    "static": {
+        "ip": "192.168.0.100",
+        "subnet": "255.255.255.0",
+        "gateway": "192.168.0.254"
+    },
+    "dhcp": {
+        "enabled": true,
+        "ip": "192.168.188.140",
+        "subnet": "255.255.255.0",
+        "gateway": "192.168.188.1"
+    }
+}
+
+------------------------------------------------------------
+Bandwidth Control
+------------------------------------------------------------
+{
+    "ports": {
+        "1": {
+            "ingress_rate": 100000,
+            "egress_rate": 500000
+        },
+        "2": {
+            "ingress_rate": 0,
+            "egress_rate": 0
+        }
+    }
+}
+
+------------------------------------------------------------
+Set Port Bandwidth Limits (Port 1)
+------------------------------------------------------------
+true
+
+------------------------------------------------------------
+SFP Info
+------------------------------------------------------------
+{
+    "port": "3",
+    "type": "10G Base-LRM",
+    "speed": "10G-Base",
+    "wave_length_nm": "1310",
+    "distance_m": "2000",
+    "temperature_c": "28.5625",
+    "voltage_v": "3.2678",
+    "current_ma": "40.8000",
+    "tx_power_dbm": "-1.4219",
+    "rx_power_dbm": "-3.7192",
+    "vendor_name": "FS",
+    "vendor_oui": "640000",
+    "vendor_part_number": "SFP-10GLRM-31",
+    "vendor_revision": "A",
+    "vendor_serial": "G2210595470",
+    "date_code": "220412"
+}
+
+------------------------------------------------------------
+Port Link Status
+------------------------------------------------------------
+{
+    "ports": {
+        "1": {
+            "auto_negotiation": true,
+            "flow_control": true,
+            "asymmetric_flow": true,
+            "duplex_full": true,
+            "speed_mbps": 10,
+            "link_up": false,
+            "link_time_seconds": 0
+        },
+        "2": {
+            "auto_negotiation": true,
+            "flow_control": true,
+            "asymmetric_flow": true,
+            "duplex_full": true,
+            "speed_mbps": 1000,
+            "link_up": true,
+            "link_time_seconds": 38
+        }
+    }
+}
+
+------------------------------------------------------------
+Switch VLANs
+------------------------------------------------------------
+[
+    {
+        "name": "default",
+        "vid": 1,
+        "state": "static",
+        "members": "1-2",
+        "tagged_ports": "0",
+        "untagged_ports": "0",
+        "forbidden_ports": "0",
+        "priority": 0,
+        "gvrp_enabled": false,
+        "age_seconds": 0,
+        "dynamic_members": "0"
+    }
+]
+
+------------------------------------------------------------
+Save Configuration
+------------------------------------------------------------
+true
+
+------------------------------------------------------------
+Print Switch Data
+------------------------------------------------------------
+{
+    "system": {
+        "details": {
+            "mac": "a8:f7:e0:d0:11:11",
+            "fwversion": "v1.44b240522",
+            "sysdate": "1970-01-01 09:52:35",
+            "uptime": "6755",
+            "fwdate": "2024-05-22T16:53",
+            "devicename": "PMC.-.Sean.Moor",
+            "comment": "Fiber.Media.Converter",
+            "location": "26823.Ingel.Road_.Brookfi",
+            "contact": "Air.Link.Rural.Broadband_"
+        },
+        "resources": {
+            "ram_usage_kb": 27636,
+            "cpu_usage_percent": 72,
+            "free_memory_display": "27636K",
+            "cpu_usage_display": "72%"
+        },
+        "network": {
+            "ipv4": {
+                "static": {
+                    "ip": "192.168.0.100",
+                    "subnet": "255.255.255.0",
+                    "gateway": "192.168.0.254"
+                },
+                "dhcp": {
+                    "enabled": true,
+                    "ip": "192.168.188.140",
+                    "subnet": "255.255.255.0",
+                    "gateway": "192.168.188.1"
+                }
+            },
+            "vlans": [
+                {
+                    "name": "default",
+                    "vid": 1,
+                    "state": "static",
+                    "members": "1-2",
+                    "tagged_ports": "0",
+                    "untagged_ports": "0",
+                    "forbidden_ports": "0",
+                    "priority": 0,
+                    "gvrp_enabled": false,
+                    "age_seconds": 0,
+                    "dynamic_members": "0"
+                }
+            ]
+        }
+    },
+    "ports": {
+        "1": {
+            "bandwidth_control": {
+                "ingress_rate": 50000,
+                "egress_rate": 100000
+            },
+            "port_link_status": {
+                "auto_negotiation": true,
+                "flow_control": true,
+                "asymmetric_flow": true,
+                "duplex_full": true,
+                "speed_mbps": 10,
+                "link_up": false,
+                "link_time_seconds": 0
+            },
+            "sfp_info": null
+        },
+        "2": {
+            "bandwidth_control": {
+                "ingress_rate": 0,
+                "egress_rate": 0
+            },
+            "port_link_status": {
+                "auto_negotiation": true,
+                "flow_control": true,
+                "asymmetric_flow": true,
+                "duplex_full": true,
+                "speed_mbps": 1000,
+                "link_up": true,
+                "link_time_seconds": 38
+            },
+            "sfp_info": null
+        },
+        "3": {
+            "bandwidth_control": null,
+            "port_link_status": {
+                "auto_negotiation": null,
+                "flow_control": null,
+                "asymmetric_flow": null,
+                "duplex_full": null,
+                "speed_mbps": 10,
+                "link_up": null,
+                "link_time_seconds": null
+            },
+            "sfp_info": {
+                "port": "3",
+                "type": "10G Base-LRM",
+                "speed": "10G-Base",
+                "wave_length_nm": "1310",
+                "distance_m": "2000",
+                "temperature_c": "28.5625",
+                "voltage_v": "3.2678",
+                "current_ma": "40.8000",
+                "tx_power_dbm": "-1.4219",
+                "rx_power_dbm": "-3.7192",
+                "vendor_name": "FS",
+                "vendor_oui": "640000",
+                "vendor_part_number": "SFP-10GLRM-31",
+                "vendor_revision": "A",
+                "vendor_serial": "G2210595470",
+                "date_code": "220412"
+            }
+        }
+    }
+}
